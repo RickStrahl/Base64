@@ -1,3 +1,5 @@
+<img src="Assets/Base64-512.png" width=250 />
+
 # Base64 Windows Command Line Conversion Utility
 
 This is a small tool to allow for command line base64 encoding on Windows. The tool provides a number of ways to convert to and from base64 format. 
@@ -25,6 +27,14 @@ Windows Registry Editor Version 5.00
 ```
 
 Save as `Base64.reg` and double-click in Explorer to add to the registry after which you should see a **Convert to Base64 (.b64)** shortcut on the Explorer File Context Menu.
+
+You can also install this tool as a **Dotnet Tool** with the .NET SDK 6.0 or later (cross platform):
+
+```ps
+dotnet tool update -g Westwind.Base64
+```
+
+*Note that the Clipboard features (`-c`) do not work in the Dotnet Tool version at this time.*
 
 ## Syntax
 The command line syntax available is as follows:

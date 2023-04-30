@@ -1,0 +1,1 @@
+dotnet tool update -g Westwind.Base64 --add-source ./nupkg

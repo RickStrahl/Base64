@@ -35,7 +35,7 @@ public class Program
             string options = $@"
 [cyan]Syntax[/cyan]
 ------
-[yellow]Base64  encode|decode  -i inputFile -o outputFile -c toClipboard[/yellow]
+[yellow]Base64  encode|decode  -i inputFile -o outputFile -c Clipboard[/yellow]
 
 [cyan]Commands[/cyan]
 --------
@@ -52,8 +52,8 @@ HELP || /?          This help display
 
 [cyan]Encoding Output[/cyan]
 ---------------
--c                  encoding output to clipboard 
-                    decoding input from clipboard
+-c                  encoding output TO clipboard (Windows only)
+                    decoding input FROM clipboard (Windows only)
 -t                  encoding output to terminal
 -s                  add leading space to output (allow sending Gmail)
 

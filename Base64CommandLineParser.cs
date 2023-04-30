@@ -2,7 +2,9 @@
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
+#if NETFULL
 using System.Windows.Forms;
+#endif
 
 namespace Westwind.Base64
 {
@@ -81,12 +83,14 @@ namespace Westwind.Base64
             PrependSpace = ParseParameterSwitch("-s");
             Help = ParseParameterSwitch("-h");
 
+#if NETFULL
             if (FirstParameter.Equals("decodetext",StringComparison.OrdinalIgnoreCase) && 
                 SendToClipboard && 
                 string.IsNullOrEmpty(InputFile))
             {
                 InputFile = Clipboard.GetText();
             }
+#endif
 
         }
 

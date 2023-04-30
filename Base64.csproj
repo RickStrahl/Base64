@@ -1,30 +1,52 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.1</Version>
-		<TargetFramework>net472</TargetFramework>
-		<OutputPath>$(USERPROFILE)\Dropbox\admin</OutputPath>
-		
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<Version>0.1.4</Version>
+		<!-- 
+			can't build multi-target at the same time due to some odd incompatibilities 
+			so we have to explicitly build the NET60 and NET472 targets.
+		-->
+		<TargetFrameworks>NET472</TargetFrameworks>
+		<!--<TargetFrameworks>NET60</TargetFrameworks>-->
+		<RootNamespace>Westwind.Base64</RootNamespace>
 		<OutputType>Exe</OutputType>
 
-		<RootNamespace>Westwind.Base64</RootNamespace>
-		<UseWindowsForms>True</UseWindowsForms>
+		<Title>West Wind Base64 Dotnet Tool</Title>
+		<Description>A small utility that lets you do command line base64 conversions. Also helpful for sending email with encoded text content that can bypass content filters.</Description>
+		<Summary>A small utility that lets you do command line base64 conversions. Also helpful for sending email with encoded text content that can bypass content filters.</Summary>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' == 'NET472'">
+		<OutputPath>$(USERPROFILE)\Dropbox\admin</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+		<!--<UseWindowsForms>True</UseWindowsForms>-->
+		<DefineConstants>NETFULL</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(TargetFramework)' != 'NET472'">
+		<DefineConstants>NETCORE</DefineConstants>
+
+		<PackAsTool>true</PackAsTool>
+		<PackageId>Westwind.Base64</PackageId>
+		<ToolCommandName>base64</ToolCommandName>
+
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicense>LICENSE.MD</PackageLicense>
+	</PropertyGroup>
+	
+	<ItemGroup Condition="'$(TargetFramework)' == 'NET472' ">
+		<Reference Include="mscorlib" />
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Windows.Forms" />
+		<Reference Include="System.Drawing" />
+	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="test.pdf">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
+		<None Include="icon.png" Pack="true" PackagePath="" />
+		<None Include="LICENSE.MD" Pack="true" PackagePath="" />
 	</ItemGroup>
-	<ItemDefinitionGroup>
-		<PostBuildEvent>
-			<Command>copy "$(USERPROFILE)Dropbox\admin\Base64.exe" "$(ProjectDir)\Distribution\Base64.exe</Command>
-			<Message>Making a copy of myproject.exe</Message>
-		</PostBuildEvent>
-	</ItemDefinitionGroup>
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="copy &quot;$(USERPROFILE)\Dropbox\admin\Base64.exe&quot; &quot;$(ProjectDir)\Distribution\Base64.exe" />
-	</Target>
-
 </Project>

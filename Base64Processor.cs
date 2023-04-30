@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+#if NETFULL
 using System.Windows.Forms;
+#endif
 
 namespace Westwind.Base64
 {
@@ -43,10 +45,12 @@ namespace Westwind.Base64
             if (!string.IsNullOrEmpty(Output))
             {
 
+#if NETFULL
                 if (CommandLine.SendToClipboard)
                 {
                     Clipboard.SetText(Output);
                 }
+#endif
 
                 if (CommandLine.SendToTerminal)
                 {
