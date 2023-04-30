@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>0.1</Version>
+		<TargetFramework>net472</TargetFramework>
+		<OutputPath>$(USERPROFILE)\Dropbox\admin</OutputPath>
+		
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<OutputType>Exe</OutputType>
+
+		<RootNamespace>Westwind.Base64</RootNamespace>
+		<UseWindowsForms>True</UseWindowsForms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="test.pdf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemDefinitionGroup>
+		<PostBuildEvent>
+			<Command>copy "$(USERPROFILE)Dropbox\admin\Base64.exe" "$(ProjectDir)\Distribution\Base64.exe</Command>
+			<Message>Making a copy of myproject.exe</Message>
+		</PostBuildEvent>
+	</ItemDefinitionGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="copy &quot;$(USERPROFILE)\Dropbox\admin\Base64.exe&quot; &quot;$(ProjectDir)\Distribution\Base64.exe" />
+	</Target>
+
+</Project>

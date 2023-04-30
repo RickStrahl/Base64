@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "Base64_NoParms": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    },
+    "Base64_Output": {
+      "commandName": "Project",
+      "commandLineArgs": "encode test.pdf test.pdf.b64 -c -t"
+    },
+    "Base64_Input": {
+      "commandName": "Project",
+      "commandLineArgs": "decode test.pdf.b64 test_restored.pdf -c -t"
+    },
+    "Base64_InputOnly": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\webconnection\\WebConnectionExperimental\\WebConnectionExperimental.zip"
+    },
+    "Base64_Input_Clipboard": {
+      "commandName": "Project",
+      "commandLineArgs": "decodetext -o test_restored.pdf -c -t"
+    },
+    "Base64_Input_B64_File": {
+      "commandName": "Project",
+      "commandLineArgs": "test.pdf.b64"
+    }
+  }
+}
