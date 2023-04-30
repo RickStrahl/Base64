@@ -10,6 +10,15 @@ You can download the single file `Base64.exe` file directly from the GitHub site
 
 [Base64.exe Single File Exe](https://github.com/RickStrahl/Base64/raw/master/Distribution/Base64.exe)
 
+You can also install this tool as a **Dotnet Tool** with the .NET SDK 6.0 or later (cross platform):
+
+```ps
+dotnet tool update -g Westwind.Base64
+```
+
+*Note that the Clipboard features (`-c`) do not work in the Dotnet Tool version at this time.*
+
+### Create a Windows File Context Menu Shortcut
 Recommended usage is to save the file to a location that is in your Windows path so that you can execute it from anywhere.
 
 It's also useful to add a Explorer File Context Menu Shortcut which lets you interactively create `.b64` files from any file:
@@ -28,13 +37,7 @@ Windows Registry Editor Version 5.00
 
 Save as `Base64.reg` and double-click in Explorer to add to the registry after which you should see a **Convert to Base64 (.b64)** shortcut on the Explorer File Context Menu.
 
-You can also install this tool as a **Dotnet Tool** with the .NET SDK 6.0 or later (cross platform):
 
-```ps
-dotnet tool update -g Westwind.Base64
-```
-
-*Note that the Clipboard features (`-c`) do not work in the Dotnet Tool version at this time.*
 
 ## Syntax
 The command line syntax available is as follows:
