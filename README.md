@@ -38,7 +38,6 @@ Windows Registry Editor Version 5.00
 Save as `Base64.reg` and double-click in Explorer to add to the registry after which you should see a **Convert to Base64 (.b64)** shortcut on the Explorer File Context Menu.
 
 
-
 ## Syntax
 The command line syntax available is as follows:
 
@@ -51,7 +50,7 @@ Convert files to and from base64.
 
 Syntax
 ------
-Base64  encode|decode  -i inputFile -o outputFile -c Clipboard
+Base64  encode|decode|decodetext  -i inputFile -o outputFile -c Clipboard -t Console output
 
 Commands
 --------
@@ -70,16 +69,17 @@ Encoding Output
 ---------------
 -c                  encoding output TO clipboard (Windows only)
                     decoding input FROM clipboard (Windows only)
--t                  encoding output to terminal
+-t                  encoding output to terminal console output
 -s                  add leading space to output (allow sending Gmail)
 
 Examples
 --------
 
 base64 test.pdf                               // creates same file with .b64 ext appended
-base64 encode test.pdf test.pdf.b64 -c -t     // binary file -> b64 file + clipboard +Terminal
-base64 decode test.pdf.b64 test_restored.pdf -c -t  // b64 file ->binary file
-decodetext -o test_restored.pdf -c    // from clipboard to output file
+base64 test.pdf -c -t                         // creates output to clipboard and console out
+base64 encode test.pdf test.pdf.b64           // binary file -> b64 file + clipboard +Terminal
+base64 decode test.pdf.b64 test_restored.pdf  // b64 file ->binary file
+decodetext -o test_restored.pdf -c            // from clipboard to output file
 decodetext -i JVBERi0xLjQKMSAwIG9iago8P== -o test_restored.pdf    // b64 text -> binary output
 ```
 
