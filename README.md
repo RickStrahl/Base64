@@ -43,15 +43,15 @@ Save as `Base64.reg` and double-click in Explorer to add to the registry after w
 The command line syntax available is as follows:
 
 ```text
-Base64 Encoder 0.1
-------------------
+Base64 Encoder
+--------------
 (c) West Wind Technologies, 2023
 
 Convert files to and from base64.
 
 Syntax
 ------
-Base64  encode|decode  -i inputFile -o outputFile -c toClipboard
+Base64  encode|decode  -i inputFile -o outputFile -c Clipboard
 
 Commands
 --------
@@ -68,12 +68,15 @@ Input and Output Files
 
 Encoding Output
 ---------------
--c                  encoding output to clipboard
-                    decoding input from clipboard
+-c                  encoding output TO clipboard (Windows only)
+                    decoding input FROM clipboard (Windows only)
 -t                  encoding output to terminal
+-s                  add leading space to output (allow sending Gmail)
 
 Examples
 --------
+
+base64 test.pdf                               // creates same file with .b64 ext appended
 base64 encode test.pdf test.pdf.b64 -c -t     // binary file -> b64 file + clipboard +Terminal
 base64 decode test.pdf.b64 test_restored.pdf -c -t  // b64 file ->binary file
 decodetext -o test_restored.pdf -c    // from clipboard to output file
