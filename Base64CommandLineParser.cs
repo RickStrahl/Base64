@@ -62,26 +62,31 @@ namespace Westwind.Base64
                 }
 
             }
-            
+
+            SendToClipboard = ParseParameterSwitch("-c");
+            SendToTerminal = ParseParameterSwitch("-t");
+            PrependSpace = ParseParameterSwitch("-s");
+            Help = ParseParameterSwitch("-h");
+
+
             // Only .b64 file is passed 
             if (FirstParameter.Contains(".b64") && string.IsNullOrEmpty(OutputFile))
             {
                 InputFile = FirstParameter;
                 OutputFile = InputFile.Replace(".b64", "");
             }
+            // No output file, but .b64 passed 
             else if (string.IsNullOrEmpty(OutputFile) && InputFile.Contains(".b64"))
             {
                 OutputFile = InputFile.Replace(".b64", "");
             }
-            else if (string.IsNullOrEmpty(OutputFile) && !string.IsNullOrEmpty(InputFile))
+            // No output file and not to clipboard - assume .b64
+            else if (string.IsNullOrEmpty(OutputFile) && !string.IsNullOrEmpty(InputFile) && !SendToClipboard)
             {
                 OutputFile = InputFile + ".b64";
             }
 
-            SendToClipboard = ParseParameterSwitch("-c");
-            SendToTerminal = ParseParameterSwitch("-t");
-            PrependSpace = ParseParameterSwitch("-s");
-            Help = ParseParameterSwitch("-h");
+            
 
 #if NETFULL
             if (FirstParameter.Equals("decodetext",StringComparison.OrdinalIgnoreCase) && 

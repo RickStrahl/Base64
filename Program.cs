@@ -35,13 +35,13 @@ public class Program
             string options = $@"
 [cyan]Syntax[/cyan]
 ------
-[yellow]Base64  encode|decode  -i inputFile -o outputFile -c Clipboard[/yellow]
+[yellow]Base64  encode|decode|decodetext  -i inputFile -o outputFile -c Clipboard[/yellow]
 
 [cyan]Commands[/cyan]
 --------
 encode              Encode files to base64
-decode              Base64 file content to binary output file
-decodetext          Decode base64 text to binary output file
+decode              Decode base64 file content 
+decodetext          Decode base64 text
 HELP || /?          This help display
 
 [cyan]Input and Output Files[/cyan]
@@ -55,15 +55,16 @@ HELP || /?          This help display
 -c                  encoding output TO clipboard (Windows only)
                     decoding input FROM clipboard (Windows only)
 -t                  encoding output to terminal
--s                  add leading space to output (allow sending Gmail)
+-s                  add leading space to output (allow sending GMail)
 
 [cyan]Examples[/cyan]
 --------
 
 base64 test.pdf                               // creates same file with .b64 ext appended
-base64 encode test.pdf test.pdf.b64 -c -t     // binary file -> b64 file + clipboard +Terminal
-base64 decode test.pdf.b64 test_restored.pdf -c -t  // b64 file ->binary file
-decodetext -o test_restored.pdf -c    // from clipboard to output file
+base64 test.pdf -c -t                         // outputs to clipboard and console out
+base64 encode test.pdf test.pdf.b64           // binary file -> b64 file + clipboard +Terminal
+base64 decode test.pdf.b64 test_restored.pdf  // b64 file ->binary file
+decodetext -o test_restored.pdf -c            // from clipboard to output file
 decodetext -i JVBERi0xLjQKMSAwIG9iago8P== -o test_restored.pdf    // b64 text -> binary output
 ";
             ColorConsole.WriteEmbeddedColorLine(options);

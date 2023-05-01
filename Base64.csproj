@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.1.4</Version>
+		<Version>0.1.4.1</Version>
 		<!-- 
 			can't build multi-target at the same time due to some odd incompatibilities 
 			so we have to explicitly build the NET60 and NET472 targets.
