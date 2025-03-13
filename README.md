@@ -2,7 +2,7 @@
 
 # Base64 Windows Command Line Conversion Utility
 
-This is a small tool to allow for command line base64 encoding. The tool provides a number of ways to convert to and from base64 format. It's useful for script automation and installer scripts.
+This is a small tool to allow for command line base64 encoding. The tool provides a number of ways to convert to and from base64 format. It's useful for script automation and installer scripts or for simply getting base64 output from binary files for pasting etc.
 
 Features:
 
@@ -69,7 +69,7 @@ The command line syntax available is as follows:
 ```text
 Base64 Encoder
 --------------
-(c) West Wind Technologies, 2023
+(c) West Wind Technologies, 2023-2025
 
 Convert files to and from base64.
 
