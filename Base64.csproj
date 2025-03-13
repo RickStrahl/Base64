@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.1.4.1</Version>
+		<Version>0.1.5</Version>
 		<!-- 
 			can't build multi-target at the same time due to some odd incompatibilities 
 			so we have to explicitly build the NET60 and NET472 targets.
 		-->
-		<TargetFrameworks>NET472</TargetFrameworks>
-		<!--<TargetFrameworks>NET60</TargetFrameworks>-->
+		<!--<TargetFrameworks>NET472</TargetFrameworks>-->
+		<TargetFrameworks>NET80</TargetFrameworks>
 		<RootNamespace>Westwind.Base64</RootNamespace>
 		<OutputType>Exe</OutputType>
 
 		<Title>West Wind Base64 Dotnet Tool</Title>
 		<Description>A small utility that lets you do command line base64 conversions. Also helpful for sending email with encoded text content that can bypass content filters.</Description>
-		<Summary>A small utility that lets you do command line base64 conversions. Also helpful for sending email with encoded text content that can bypass content filters.</Summary>
+		<Summary>A small utility that lets you do command line base64 conversions for files and base64 strings and the clipboard (on Windows). Also helpful for sending email with encoded text content that can bypass content filters.</Summary>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)' == 'NET472'">
-		<OutputPath>$(USERPROFILE)\Dropbox\admin</OutputPath>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<!--<OutputPath>$(USERPROFILE)\Dropbox\utl</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>-->
 
 		<!--<UseWindowsForms>True</UseWindowsForms>-->
 		<DefineConstants>NETFULL</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)' != 'NET472'">
 		<DefineConstants>NETCORE</DefineConstants>
-
 		<PackAsTool>true</PackAsTool>
 		<PackageId>Westwind.Base64</PackageId>
 		<ToolCommandName>base64</ToolCommandName>
-
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageLicense>LICENSE.MD</PackageLicense>
+
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://www.nuget.org/packages/Westwind.base64</PackageProjectUrl>
 	</PropertyGroup>
 	
 	<ItemGroup Condition="'$(TargetFramework)' == 'NET472' ">
@@ -48,5 +48,6 @@
 	<ItemGroup>
 		<None Include="icon.png" Pack="true" PackagePath="" />
 		<None Include="LICENSE.MD" Pack="true" PackagePath="" />
+		<None Include="README.md" Pack="true" PackagePath="" />
 	</ItemGroup>
 </Project>

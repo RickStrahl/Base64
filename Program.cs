@@ -24,7 +24,7 @@ public class Program
         string text = $"Base64 Encoder {ver}";
         ColorConsole.WriteLine(text, ConsoleColor.Yellow);
         ColorConsole.WriteLine(new string('-', text.Length), ConsoleColor.Yellow);
-        ColorConsole.WriteLine("(c) West Wind Technologies, 2023", ConsoleColor.DarkGray);
+        ColorConsole.WriteLine("(c) West Wind Technologies, 2023-" + DateTime.Now.Year, ConsoleColor.DarkGray);
 
         if (args == null || args.Length == 0 || args[0] == "HELP" || args[0] == "/?")
         {

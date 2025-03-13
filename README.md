@@ -1,8 +1,20 @@
-<img src="Assets/Base64-512.png" width=250 />
+<img src="https://raw.githubusercontent.com/RickStrahl/base64/master/Assets/Base64-512.png" width=200 />
 
 # Base64 Windows Command Line Conversion Utility
 
-This is a small tool to allow for command line base64 encoding on Windows. The tool provides a number of ways to convert to and from base64 format. 
+This is a small tool to allow for command line base64 encoding. The tool provides a number of ways to convert to and from base64 format. It's useful for script automation and installer scripts.
+
+Features:
+
+* Single file executable on Windows
+* Cross Platform `dotnet tool`
+* File based creation and parsing
+* base64 string encoding and decoding support
+* StdIo and StdIo input and output support
+* Mix and match input and output formats
+* Clipboard output (Windows)
+
+The standalone EXE is windows only, while the .NET tool can work cross-platform.
 
 ## Single File Binary Download and Usage
 
@@ -29,13 +41,26 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\*\shell\Base64]
 "Command"="C:\\Users\\rstrahl\\Dropbox\\admin\\Base64.exe"
-@="Convert to Base64 (.b64)"
+@="Convert to Base64 File (.b64)"
 
 [HKEY_CLASSES_ROOT\*\shell\Base64\command]
 @="C:\\Users\\rstrahl\\Dropbox\\admin\\Base64.exe \"%1\""
 ```
 
 Save as `Base64.reg` and double-click in Explorer to add to the registry after which you should see a **Convert to Base64 (.b64)** shortcut on the Explorer File Context Menu.
+
+You can also set up another one to convert a file to Base64 on the clipboard which is useful for other use cases:
+
+```text
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\Base64]
+"Command"="C:\\Users\\rstrahl\\Dropbox\\admin\\Base64.exe"
+@="Convert to Base64 and place on Clipboard"
+
+[HKEY_CLASSES_ROOT\*\shell\Base64\command]
+@="C:\\Users\\rstrahl\\Dropbox\\admin\\Base64.exe \"%1\" -c"
+```
 
 
 ## Syntax
@@ -79,19 +104,18 @@ base64 test.pdf                               // creates same file with .b64 ext
 base64 test.pdf -c -t                         // creates output to clipboard and console out
 base64 encode test.pdf test.pdf.b64           // binary file -> b64 file + clipboard +Terminal
 base64 decode test.pdf.b64 test_restored.pdf  // b64 file ->binary file
-decodetext -o test_restored.pdf -c            // from clipboard to output file
-decodetext -i JVBERi0xLjQKMSAwIG9iago8P== -o test_restored.pdf    // b64 text -> binary output
+base64 decodetext -o test_restored.pdf -c            // from clipboard to output file
+base64 decodetext -i JVBERi0xLjQKMSAwIG9iago8P== -o test_restored.pdf    // b64 text -> binary output
 ```
 
 
 ## License
 This library is published under **MIT license** terms.
 
-**Copyright &copy; 2023 Rick Strahl, West Wind Technologies**
+**Copyright &copy; 2023-2025 Rick Strahl, West Wind Technologies**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sub-license, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
